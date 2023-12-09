@@ -1,0 +1,78 @@
+ül 1
+
+1.1
+	räsimist kasutatakse andmete salvestamiseks nii ,et seda saaks kiiresti kätte.
+	räsimisel iga info element mida kutsudakse ka võtmeks on seotud identifikaatoriga mida nimetadakse räsiks(hash).
+	räsi saadakse lastes võtme läbi räsi funktsiooni.
+
+1.2
+	hea räsifunktsioon üritab vältida eri võtmetele sama räsiväärtuse loomist, et vältida kokkupõrkeid eri andmetega millel on sam aräsiväärtus.
+	sama sisendi korral alati saada sama räsiväärtus
+
+1.3
+	eraldi aheldamisel kasutatakse iga räsiväärtusel luuakse linked list kuhu saab panna mitu elementi
+	eelisteks on lihtne implementeerida, saame alati lisada veel elemente listi.
+	puuduseks on listidest otsimine ei kiire, kasutame rohkem mälu.
+
+	avatud adressimine kokkupõrke korral otsitakse järgmist vaba lahtrit kuhu salvestada, siin kasutatakse tavaliselt 3 eri lahendust mis on lineaarset proovimist, kvadratuurproovimist või topelthashingut.
+	eelistuseks on et säilitab kiire otsimise ja ei kasuta täiendavad mälu
+	puuduseks nõuab täpsemat kokkupõrgete haldamist
+
+2.2
+	algoritmi ajakompleksus on O(n)
+	ruumikompleksus on O(m) kus m on suurima elemendi suurus.
+
+2.3
+	Andmebaasides: Indeksi kaardistamist saabkasutada andmebaasides, kus võti (indeks) määratakse otse andmeelemendi juurde.
+	Näiteks, kui teil on kasutajate andmebaas, võib iga kasutaja ID olla otse seotud vastava kasutaja andmetega.
+
+	Võrguarhitektuuris: Indeksi kaardistamist saab rakendada võrguarhitektuuris, kus ressursse (näiteks servereid või teenuseid) kaardistatakse otse nende unikaalsete indeksitega.
+	See võimaldab kiiret juurdepääsu konkreetsele ressursile.
+
+	Operatsioonisüsteemides: Indeksi kaardistamist saab kasutada operatsioonisüsteemides, kus protsessidele või failidele määratakse otse unikaalsed indeksid.
+	Näiteks, failisüsteemis võib failiindeks olla otsene seos selle füüsilise asukoha või muude atribuutideg
+
+3.2
+	ajakompleksuselt on separate chaining efektiivsem, kui esineb palju kokkuporkeid, aga open adressing on parem vaiksemate andmekogude jaoks.
+	ruumikompleksuselt on separate chaining halvem kuna iga list nouab rohkem malu . Open adressing on tavaliselt malu poolest efektiivsem
+
+3.3
+	plussid
+	kui kokkupõrgeid on palju jääb otsingu kulu enamasti sama
+	lihtn implementeerida
+		
+	miinused
+	mälu vaja rohkem
+	kui andmehulk on madal ja kokkupõrkeid on vähe siis ei ole eriti efektiivne
+	
+4.1
+	avatud adreseerimisel üritatakse räsi kokkupõrke korral leida järgmine vaba räsi
+
+	
+4.2	
+	lineaar otsing, kui tegib kokkupõrge otsitakse järgmist vaba kohta liikudes lineaarselt edasi.
+	lihtne rakendada ja madal arv arvutuslikke operatsioone. puuduseks on et tekib cluster kus on järjestukkused vabad kohad mis vüib vähendada tõhusust.
+
+	quadratic probing,sarnaneb lineaar otsingule aga otsingu samm mis eelmises oli alati 1 nüüd suureneb ruutude kaupa.
+	eeliseks on üldiselt vähem cluster-eid.
+	puuduseks on raskem implementeerida ja rohkem arvutusi.
+
+	double hashing kasutab kahte räsifunktsiooni kus esimene määrab indeksi ja teine määrab sammu
+	eelisteks vahe cluster-eid ja on rohkem ühtlane jaotus 
+	puuduseks on on keerulisem implementeerida ja räsi funktsioonid tuleb valida nii, et ei tekiks rohkem kokkupõrkeid
+4.3
+	Linear on parim kui andmeid on vahe
+	ei oska oelda kus quadratic on parem kui linear voi topelt rasimine
+	topelt räsimine on he akui on palju andmeid ja suur probleem klastrite tekkimisega
+	
+5.2
+	me käime läbi iga elemendi alg listis ja siis otsime iga elemendi jaoks asukoha on ajaline keerukus parimal juhul O(n)
+	ruumi kompleksus in O(m) kus m on suurim element kuna selle järgi loome räsi suuruse
+
+5.3
+	topelt räsimine on hea olukorras kus muidu tekkiks palju klasterdamist(cluster)
+
+Boonus
+	koormustegur on suhe tabelisse salvestatud elementide vahel ja tabeli suuruse vahel ja annab aimu kui täidetud räsitabel on.
+	rehashing suurendab tabelit ja laseb uutel sisendidel ara mahtuda	
+	
